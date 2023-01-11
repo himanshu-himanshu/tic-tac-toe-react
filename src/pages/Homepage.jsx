@@ -59,6 +59,34 @@ const Homepage = () => {
         return;
       }
     }
+
+    if (
+      board[0][0] !== "" &&
+      board[0][0] === board[1][1] &&
+      board[1][1] === board[2][2]
+    ) {
+      if (board[0][0] === "circle") {
+        displayWinner("Circle");
+        return;
+      } else {
+        displayWinner("Cross");
+        return;
+      }
+    }
+
+    if (
+      board[0][2] !== "" &&
+      board[0][2] === board[1][1] &&
+      board[1][1] === board[2][0]
+    ) {
+      if (board[0][2] === "circle") {
+        displayWinner("Circle");
+        return;
+      } else {
+        displayWinner("Cross");
+        return;
+      }
+    }
   };
 
   const displayWinner = (winner) => {
@@ -254,7 +282,7 @@ const Homepage = () => {
           </div>
         </div>
         <div className="font-light tracking-wide text-gray-500 flex flex-row items-center justify-center space-x-4">
-          <span className="text-xl">Next Player:</span>
+          <span className="text-xl">Next Turn:</span>
           {activePlayer === "cross" ? (
             <RxCross1 className="h-5 w-5 text-gray-500" />
           ) : (
